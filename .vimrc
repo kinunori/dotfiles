@@ -33,6 +33,10 @@ else
   set t_Co=16
 endif
 
+" load_or remove chef_dict
+command ChefDicAdd set dictionary+=~/.vim/dict/opscode_chef.dict/*.dict
+command ChefDicRem set dictionary-=~/.vim/dict/opscode_chef.dict/*.dict
+
 "-------------------------
 "" End Neobundle Settings.
 "-------------------------
