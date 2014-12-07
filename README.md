@@ -16,7 +16,8 @@ chmod 755 otfile_set.sh
 
 cd ~/dotfiles
 
-git submodule add https://github.com/Shougo/neobundle.vim .vim/bundle/neobundle.vim
+git submodule init
+git submodule update
 
 vim
 
