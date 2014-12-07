@@ -17,6 +17,7 @@ chmod 755 otfile_set.sh
 cd ~/dotfiles
 
 git submodule init
+
 git submodule update
 
 vim
