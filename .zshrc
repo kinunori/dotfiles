@@ -66,6 +66,9 @@ alias -g L='| less'
 # alias fo git
 alias -g gp='git push -u origin master'
 
+# lsの結果に色をつける
+
+alias ls='ls -G'
 
 # End of lines added by compinstall
 
@@ -89,4 +92,30 @@ function gim() {
 # sでsshをリストから選択して実行する
 alias s='ssh $(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config|peco|awk "{print \$2}")'
 
+#export PYTHONPATH=/usr/local/lib/python3.4/site-packages/
+
+# 115200でUSBシリアルで接続する
+alias -g cumu='screen /dev/cu.usbserial 115200'
+alias -g cisco='screen /dev/cu.usbserial 9600'
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:/Users/masa/_go/bin:$PATH"
+
+
+# pyenv初期化
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+ export PATH=${PYENV_ROOT}/bin:$PATH
+ eval "$(pyenv init -)"
+fi
+
+# title と書いておけば、cdしたときにlsが実行されるのに加えて
+# タブのtitleとして
+# [一個上のディレクトリ名]/[現在のディレクトリ名]
+# が表示されて、複数のtabで行き来する場合に「どのtabがどのディレクトリで作業してるか」把握しやすい
+
+function chpwd() { ls; echo -ne "\033]0;$(pwd | rev | awk -F \/ '{print "/"$1"/"$2}'| rev)\007"}
+
+# topを起動している間tabの色が黄緑っぽくなる。
+
+alias top='tab-color 134 200 0; top; tab-reset'
 
