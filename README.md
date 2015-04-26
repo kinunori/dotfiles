@@ -13,7 +13,12 @@ chmod 755 otfile_set.sh
 ./dotfile_set.sh
 
 #set up vim
-git submodule add https://github.com/Shougo/neobundle.vim .vim/bundle/neobundle.vim
+
+cd ~/dotfiles
+
+git submodule init
+
+git submodule update
 
 vim
 
