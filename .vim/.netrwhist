@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/masa/.vim'
 let g:netrw_dirhist_2='/Users/masa/Project/ruby/test'
 let g:netrw_dirhist_3='/Users/masa/Project/hubot/sushibot/scripts'
 let g:netrw_dirhist_4='/etc'
 let g:netrw_dirhist_5='/Users/masa/Desktop'
 let g:netrw_dirhist_6='/Users/masa/work/sushi_LT/boot2docker/ansible/sample/.kitchen'
+let g:netrw_dirhist_7='/Users/masa/work/Vagrant/cumulus/spec'
+let g:netrw_dirhist_8='/Users/masa/work/Vagrant/cumulus/itamae/cookbooks'
+let g:netrw_dirhist_9='/Users/masa/work/Vagrant/rails4/vote/vote_book/app/controllers'

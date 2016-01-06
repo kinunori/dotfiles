@@ -151,7 +151,8 @@ NeoBundle 'Shougo/neosnippet-snippets'
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>" 
 
 " Plugin key-mappings.
-" c-kにするとChefDictと重複して使えないのでc-jに変更
+" C-kにするとChefDictと重複して使えないのでc-jに変更
+" C-jでNeoSnippetで候補されたスニペットを展開する
 imap <C-j>     <Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
  
@@ -197,6 +198,12 @@ command ChefDicRem set dictionary-=~/.vim/dict/opscode_chef.dict/*.dict
 
 " 自動でコメントアウトされる問題解消
 autocmd FileType * setlocal formatoptions-=ro
+
+"行番号を表示
+set number
+
+"grepをjvgrepにする
+set grepprg=jvgrep
 
 "-------------------------
 "" End Neobundle Settings.

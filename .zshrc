@@ -75,6 +75,7 @@ alias ls='ls -G'
 PROMPT='[%n@%m]'
 RPROMPT='[%F{green}%d%f]'
 
+# rbenv初期化
 if which rbenv > /dev/null; then
    export RBENV_ROOT="${HOME}/.rbenv"
    export PATH=${RBENV_ROOT}/shims:${PATH}
@@ -95,17 +96,16 @@ alias s='ssh $(grep -iE "^host[[:space:]]+[^*]" ~/.ssh/config|peco|awk "{print \
 #export PYTHONPATH=/usr/local/lib/python3.4/site-packages/
 
 # 115200でUSBシリアルで接続する
-alias -g cumu='screen /dev/cu.usbserial 115200'
-alias -g cisco='screen /dev/cu.usbserial 9600'
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:/Users/masa/_go/bin:$PATH"
+alias -g serial-115200='screen /dev/cu.usbserial 115200'
+alias -g serial-9600='screen /dev/cu.usbserial 9600'
+### Added by the Heroku Toolbelt and Hashicorp Packer
+export PATH="/usr/local/heroku/bin:/opt/packer:/Users/masa/_go/bin:$PATH"
 
 
 # pyenv初期化
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
- export PATH=${PYENV_ROOT}/bin:$PATH
- eval "$(pyenv init -)"
+if [ -d $HOME/.pyenv ]; then
+  export PATH="${HOME}/.pyenv/shims:$PATH"
+  eval "$(pyenv init -)"
 fi
 
 # title と書いておけば、cdしたときにlsが実行されるのに加えて
@@ -119,3 +119,21 @@ function chpwd() { ls; echo -ne "\033]0;$(pwd | rev | awk -F \/ '{print "/"$1"/"
 
 alias top='tab-color 134 200 0; top; tab-reset'
 
+
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:
+
+# コマンド補完用 コマンド + スペースでそのあとのオプションなども補完できる
+# /usr/local/share/zsh-completions配下に補完用のファイルがある
+# 外部からの補完用ファイルを追加することも可能
+# 例：curl -L https://raw.github.com/felixr/docker-zsh-completion/master/_docker > \
+#     /usr/local/share/zsh-completions/_docker
+
+if [ -e /usr/local/share/zsh-completions ]; then
+   fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+# node_modules
+export NODE_PATH=/usr/local/lib/node_modules
+
+# aws cli の自動補完
+source /usr/local/share/zsh/site-functions/_aws
