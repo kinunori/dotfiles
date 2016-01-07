@@ -14,15 +14,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 call neobundle#end()
 
-" ファイルオープンを便利に
+""""""""""
+" Unite
+""""""""""
 NeoBundle 'Shougo/unite.vim'
-" Unite.vimで最近使ったファイルを表示できるようにする
-NeoBundle 'Shougo/neomru.vim'
 
-" http://blog.remora.cx/2010/12/vim-ref-with-unite.html
-""""""""""""""""""""""""""""""
-" Unit.vimの設定
-""""""""""""""""""""""""""""""
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " バッファ一覧
@@ -44,13 +40,18 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """"""""""""""""""""""""""""""
 
+" Unite.vimで最近使ったファイルを表示できるようにする
+NeoBundle 'Shougo/neomru.vim'
+
 " Unite -auto-preview colorscheme で利用
 " カラースキーマをレビューできる
 NeoBundle 'ujihisa/unite-colorscheme'
 
-" snippet
+""""""""""
+" neocomplcache
+" 入力補完をしてくれるvimプラグイン
+""""""""""
 NeoBundle 'Shougo/neocomplcache'
-
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -140,10 +141,13 @@ let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"""""""""""""""""""""""""""""
 
+"""""""""""
+" snippet
+"""""""""""
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-
 " neosnippet用設定
 " neocomplcacheの出す補完候補をTABで送れる、Shift + TABで戻れる
 " http://kazuph.hateblo.jp/entry/2013/01/19/193745
@@ -160,7 +164,6 @@ smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
 
-
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
@@ -170,21 +173,45 @@ endif
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 "let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+""""""""""""""""""""""""""""
 
+"""""""""""
 " MultipleCursorsFindで利用
 " http://qiita.com/sachin21/items/cfcb81bf4d1073429b68
+"""""""""""
 NeoBundle 'terryma/vim-multiple-cursors'
 
+"""""""""""
 " ファイルをtree表示してくれる
+"""""""""""
 NeoBundle 'scrooloose/nerdtree'
+" Crtl-eでNERDtreeを起動
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
+"""""""""""
 " Color Scheme jellybeans
+"""""""""""
 NeoBundle 'nanotech/jellybeans.vim'
 colorscheme jellybeans
 
+"""""""""""
+" vim-ruby
+"""""""""""
 NeoBundle 'vim-ruby/vim-ruby'
 
+"""""""""""
+" vim-rails
+" :R で view と コントローラを切り替えられる
+" :A で テストコードと切り替えられる
+"""""""""""
+NeoBundle 'tpope/vim-rails'
+
+"""""""""""
+" ファイルタイプの自動検出
+" ファイルタイプによるインデント設定の読み込み
+"""""""""""
 filetype plugin indent on
+
 
 if stridx($TERM, "xterm-256color") >= 0
   set t_Co=256
@@ -192,19 +219,20 @@ else
   set t_Co=16
 endif
 
-" load_or remove chef_dict
+"""""""""""
+" Chef用の辞書
+" ChefDicAddで読み込み
+" Chefdicremで解除
+""""""""""""
 command ChefDicAdd set dictionary+=~/.vim/dict/opscode_chef.dict/*.dict
 command ChefDicRem set dictionary-=~/.vim/dict/opscode_chef.dict/*.dict
 
-" 自動でコメントアウトされる問題解消
+" コメントアウト行から改行すると自動でコメントアウトされる問題解消
 autocmd FileType * setlocal formatoptions-=ro
 
-"行番号を表示
+" 行番号を表示
 set number
 
-"grepをjvgrepにする
+" grepをjvgrepにする
 set grepprg=jvgrep
 
-"-------------------------
-"" End Neobundle Settings.
-"-------------------------
