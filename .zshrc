@@ -77,9 +77,9 @@ RPROMPT='[%F{green}%d%f]'
 
 # rbenv初期化
 if which rbenv > /dev/null; then
-   export RBENV_ROOT="${HOME}/.rbenv"
-   export PATH=${RBENV_ROOT}/shims:${PATH}
-   eval "$(rbenv init -)";
+#   export RBENV_ROOT="${HOME}/.rbenv"
+#   export PATH=${RBENV_ROOT}/shims:${PATH}
+   eval "$(rbenv init - zsh)";
 fi
 
 # set GOPATH
@@ -104,7 +104,7 @@ export PATH="/usr/local/heroku/bin:/opt/packer:/Users/masa/_go/bin:$PATH"
 
 # pyenv初期化
 if [ -d $HOME/.pyenv ]; then
-  export PATH="${HOME}/.pyenv/shims:$PATH"
+#  export PATH="${HOME}/.pyenv/shims:$PATH"
   eval "$(pyenv init -)"
 fi
 
@@ -137,3 +137,8 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 # aws cli の自動補完
 source /usr/local/share/zsh/site-functions/_aws
+
+# pyenvによるbrew doctor実行時のwarningを削除する
+# http://www.task-notes.com/entry/20141223/1419324649
+alias brew="env PATH=${PATH/\/Users\/masa\/\.pyenv\/shims:/} brew"
+

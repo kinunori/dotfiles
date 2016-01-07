@@ -186,7 +186,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
 """""""""""
 NeoBundle 'scrooloose/nerdtree'
 " Crtl-eでNERDtreeを起動
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><C-f> :NERDTreeToggle<CR>
 
 """""""""""
 " Color Scheme jellybeans
@@ -205,6 +205,12 @@ NeoBundle 'vim-ruby/vim-ruby'
 " :A で テストコードと切り替えられる
 """""""""""
 NeoBundle 'tpope/vim-rails'
+
+"""""""""""
+" Windowsリサイズを高速にするプラグイン
+" Crtl-e でリサイズモード, enterで終了
+"""""""""""
+NeoBundle 'simeji/winresizer'
 
 """""""""""
 " ファイルタイプの自動検出
