@@ -63,12 +63,17 @@ alias -g G='| grep'
 # パイプラインでlessを渡す
 alias -g L='| less'
 
-# alias fo git
-alias -g gp='git push -u origin master'
-
 # lsの結果に色をつける
-
-alias ls='ls -G'
+case "${OSTYPE}" in
+darwin*)
+ # Mac
+ alias ls="ls -GF"
+;;
+linux*)
+ # Linux
+ alias ls='ls -F --color'
+;;
+esac
 
 # End of lines added by compinstall
 
