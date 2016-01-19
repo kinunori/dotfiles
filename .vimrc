@@ -4,7 +4,7 @@
 
 syntax on
 set nocompatible
-filetype plugin indent off
+filetype plugin indent on
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -199,6 +199,12 @@ colorscheme jellybeans
 """""""""""
 NeoBundle 'vim-ruby/vim-ruby'
 
+""""""""""
+" vim-endwise
+" end を補完してくれる
+""""""""""
+NeoBundle 'tpope/vim-endwise'
+
 """""""""""
 " vim-rails
 " :R で view と コントローラを切り替えられる
@@ -212,13 +218,7 @@ NeoBundle 'tpope/vim-rails'
 """""""""""
 NeoBundle 'simeji/winresizer'
 
-"""""""""""
-" ファイルタイプの自動検出
-" ファイルタイプによるインデント設定の読み込み
-"""""""""""
-filetype plugin indent on
-
-
+" 色設定
 if stridx($TERM, "xterm-256color") >= 0
   set t_Co=256
 else
@@ -236,9 +236,34 @@ command ChefDicRem set dictionary-=~/.vim/dict/opscode_chef.dict/*.dict
 " コメントアウト行から改行すると自動でコメントアウトされる問題解消
 autocmd FileType * setlocal formatoptions-=ro
 
+" インデントの設定
+set autoindent 
+set tabstop=2
+set shiftwidth=2
+
 " 行番号を表示
 set number
 
 " grepをjvgrepにする
 set grepprg=jvgrep
+
+" sudoで開き忘れた時にsudoして保存する
+cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
+
+
+" filetypeに合わせてdash.appを呼び出す
+" :Dash <word> or :Dash<Enter>で呼び出し。後者はfiletype以外で検索
+
+function! s:dash(...)
+  let ft = &filetype
+  if &filetype == 'python'
+    let ft = ft.'2'
+  endif
+  let ft = ft.':'
+  let word = len(a:000) == 0 ? input('Dash search: ', ft.expand('<cword>')) : ft.join(a:000, ' ')
+  call system(printf("open dash://'%s'", word))
+endfunction
+command! -nargs=* Dash call <SID>dash(<f-args>)
+
+
 
