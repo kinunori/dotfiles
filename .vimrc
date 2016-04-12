@@ -265,5 +265,29 @@ function! s:dash(...)
 endfunction
 command! -nargs=* Dash call <SID>dash(<f-args>)
 
+" ハイライト表示
+NeoBundle 't9md/vim-quickhl'
 
+" <Space>m でカーソル下の単語、もしくは選択した範囲のハイライトを行う
+" 再度 <Space>m を行うとカーソル下のハイライトを解除する
+" 複数の単語のハイライトを行う事もできる
+" <Space>M で全てのハイライトを解除する
+
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+NeoBundle "tyru/caw.vim"
+
+" コメントアウトを切り替えるマッピング
+" \c でカーソル行をコメントアウト
+" 再度 \c でコメントアウトを解除
+" 選択してから複数行の \c も可能
+nmap \c <Plug>(caw:I:toggle)
+vmap \c <Plug>(caw:I:toggle)
+
+" \C でコメントアウトの解除
+nmap \C <Plug>(caw:I:uncomment)
+vmap \C <Plug>(caw:I:uncomment)
 

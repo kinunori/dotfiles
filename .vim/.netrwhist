@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/masa/work/Vagrant/CentOS6.7_x86/host_vars'
 let g:netrw_dirhist_2='/Users/masa/work/Vagrant/CentOS6.7_x86/roles/common/handler'
+let g:netrw_dirhist_3='/Users/masa/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/awspec-0.33.0/lib/awspec/helper/finder'
+let g:netrw_dirhist_4='/Users/masa/work/ansible/msc/raito_playbook/roles/common'
+let g:netrw_dirhist_5='/Users/masa/work/ansible/msc/msc_playbook/roles/common/files'
