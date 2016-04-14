@@ -6,7 +6,7 @@ setopt appendhistory autocd extendedglob notify hist_ignore_space
 setopt auto_pushd
 
 # 同時に起動したzshの間でヒストリを共有する
-setopt share_history
+#setopt share_history
 
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups

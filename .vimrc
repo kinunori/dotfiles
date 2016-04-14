@@ -21,12 +21,16 @@ NeoBundle 'Shougo/unite.vim'
 
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
+" yank履歴を有効化
+let g:unite_source_history_yank_enable=1
 " バッファ一覧
 noremap <C-P> :Unite buffer<CR>
 " ファイル一覧
 noremap <C-L> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
+" yank履歴の表示
+noremap <C-Y> :Unite history/yank<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
